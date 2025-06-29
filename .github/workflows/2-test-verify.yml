@@ -1,0 +1,29 @@
+name: Test and Verify
+
+on:
+  workflow_dispatch:
+
+jobs:
+  verify-test:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+
+    steps:
+      - name: Download signed artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: signed-artifact
+
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3.1.1
+
+      - name: Verify signature
+        run: |
+          cosign verify-blob --key https://Fulcio.sigstore.dev --signature app.sig app.tar.gz
+
+      - name: Extract and Test
+        run: |
+          tar -xzf app.tar.gz
+          chmod +x app/hello.sh
+          ./app/hello.sh
