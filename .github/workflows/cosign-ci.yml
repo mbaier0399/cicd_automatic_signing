@@ -39,12 +39,14 @@ jobs:
           cosign sign-blob \
             --yes \
             --output-signature artifacts/intermediate.zip.sig \
+            --output-certificate artifacts/intermediate.zip.pem \
             artifacts/intermediate.zip
 
       - name: Verify intermediate signature
         run: |
           cosign verify-blob \
             --signature artifacts/intermediate.zip.sig \
+            --certificate artifacts/intermediate.zip.pem \
             artifacts/intermediate.zip
 
       - name: Build Docker image
