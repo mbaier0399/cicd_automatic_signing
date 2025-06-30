@@ -48,6 +48,7 @@ jobs:
             --signature artifacts/intermediate.zip.sig \
             --certificate artifacts/intermediate.zip.pem \
             --certificate-identity-regexp ".*github.com.*" \
+            --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
             artifacts/intermediate.zip
 
       - name: Build Docker image
