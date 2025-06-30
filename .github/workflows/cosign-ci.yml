@@ -53,15 +53,15 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}:latest .
+          docker build -t ghcr.io/mbaier0399/cicd_automatic_signing:latest .
 
       - name: Push Docker image
         run: |
-          docker push ghcr.io/${{ github.repository }}:latest
+          docker push ghcr.io/mbaier0399/cicd_automatic_signing:latest
 
       - name: Sign Docker image with Cosign
         run: |
-          cosign sign --keyless ghcr.io/${{ github.repository }}:latest
+          cosign sign --keyless ghcr.io/mbaier0399/cicd_automatic_signing:latest
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
