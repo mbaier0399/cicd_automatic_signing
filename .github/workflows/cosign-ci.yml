@@ -36,13 +36,13 @@ jobs:
 
       - name: Sign intermediate blob
         run: |
-          cosign sign-blob --keyless \
+          cosign sign-blob \
             --output-signature artifacts/intermediate.zip.sig \
             artifacts/intermediate.zip
 
       - name: Verify intermediate signature
         run: |
-          cosign verify-blob --keyless \
+          cosign verify-blob \
             --signature artifacts/intermediate.zip.sig \
             artifacts/intermediate.zip
 
