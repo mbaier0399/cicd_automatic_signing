@@ -7,6 +7,7 @@ on:
 permissions:
   id-token: write   # Für Cosign keyless signing nötig
   contents: read
+  packages: write
 
 jobs:
   build-sign:
