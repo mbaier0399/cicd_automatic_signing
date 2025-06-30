@@ -37,6 +37,7 @@ jobs:
       - name: Sign intermediate blob
         run: |
           cosign sign-blob \
+            --yes \
             --output-signature artifacts/intermediate.zip.sig \
             artifacts/intermediate.zip
 
