@@ -47,6 +47,7 @@ jobs:
           cosign verify-blob \
             --signature artifacts/intermediate.zip.sig \
             --certificate artifacts/intermediate.zip.pem \
+            --certificate-identity-regexp ".*github.com.*" \
             artifacts/intermediate.zip
 
       - name: Build Docker image
